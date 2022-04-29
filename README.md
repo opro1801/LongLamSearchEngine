@@ -67,20 +67,18 @@
    lib/
 3. Put lib/ folder in /apache-tomcat-10.0.20/webapps/ROOT/
 
-4. In directory /apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes
-   Run command:
+4. In directory /apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes:  
+   Run the following command to crawl webpages:
 
 ```
 make all
 ```
 
-    to crawl webpages
-    Run command:
+5. In directory /apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes:  
+   Run the following command to start the Search Engine:
 
 ```
 make server
 ```
-
-    to start the Search Engine
 
 5. visit VM_location:8080/SearchEngine.html to use the search engine
