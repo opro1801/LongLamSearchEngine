@@ -56,7 +56,7 @@
 | | | | | | | | |-TestRetrieval.java <br/>
 | | | | | | | | |-TestRocksdb.java <br/>
 
-# Installation
+## Installation
 
 1. Put below files in /apache-tomcat-10.0.20/webapps/ROOT/
    -SearchEngine.html
