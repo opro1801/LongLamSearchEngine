@@ -58,12 +58,12 @@
 
 ## Installation
 
-1. Put below files in /apache-tomcat-10.0.20/webapps/ROOT/
-   -SearchEngine.html
-   -SearchEngine.jsp
+1. Put below files in /apache-tomcat-10.0.20/webapps/ROOT/  
+   -SearchEngine.html  
+   -SearchEngine.jsp  
    -SearchEngine.css
-2. Put below folder in /apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes
-   resource/
+2. Put below folder in /apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes  
+   resource/  
    lib/
 3. Put lib/ folder in /apache-tomcat-10.0.20/webapps/ROOT/
 
