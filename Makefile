@@ -27,6 +27,8 @@ testR:
 	java -cp lib/jsoup-1.14.3.jar:.:lib/rocksdbjni-6.19.0-linux64.jar:. resource.test.testRetrieval
 compile:
 	javac resource/*/*.java -cp lib/jsoup-1.14.3.jar:lib/rocksdbjni-6.19.0-linux64.jar:lib/servlet-api.jar
+cleanClass:
+	rm -rf resource/*/*.class
 clean:
 	rm -rf resource/db
 	rm resource/*/*.class

@@ -13,7 +13,7 @@ import resource.retrieval.QueryResScore;
 import resource.retrieval.Retrieval;
 import org.rocksdb.RocksDBException;
 
-public class testRetrieval {
+public class TestRetrieval {
     public static void main(String args[]) {
         try {
             String query = "restaurant bread milk";
