@@ -1,63 +1,60 @@
 ## File Structure
 
----
-
--SearchEngine.html
--SearchEngine.jsp
--SearchEngine.css
--Makefile
--WEB-INF
-| -lib
-| | -rocksdbini-6.0.0-linux64.jar
-| | -jsoup-1.8.1.jar
-| | -servlet-api.jar
-| -classes
-| | -Makefile
-| | -lib
-| | | -rocksdbini-6.0.0-linux64.jar
-| | | -jsoup-1.8.1.jar
-| | | -servlet-api.jar
-| | -resource
-| | | -database
-| | | | -DataTranform.java
-| | | | -PageInfo.java
-| | | | -ReadData.java
-| | | | -Rockdb.java
-| | | | -WriteData.java
-| | | -forward
-| | | | -CreateForward.java
-| | | | -DataPair.java
-| | | | -ForwardData.java
-| | | | -WordData.java
-| | | -invert
-| | | | -CreateInverted.java
-| | | | -InvertedData.java
-| | | | -SimplePageInfo.java
-| | | -processing
-| | | | -Porter.java
-| | | | -StopStem.java
-| | | | -stopwords.txt
-| | | -retrieval
-| | | | -DfWord.java
-| | | | -MaxTf.java
-| | | | -QueryHandle.java
-| | | | -QueryResScore.java
-| | | | -Retrieval.java
-| | | -server
-| | | | -SearchEngineServer.java
-| | | -spider
-| | | | -Crawler.java
-| | | | -HelperData.java
-| | | -test
-| | | | -TestForwardData.java
-| | | | -TestInvertData.java
-| | | | -TestJsp.java
-| | | | -TestQueryHandle.java
-| | | | -TestRead.java
-| | | | -TestReadGlobal.java
-| | | | -TestReadInvert.java
-| | | | -TestRetrieval.java
-| | | | -TestRocksdb.java
+-SearchEngine.html <br/>
+-SearchEngine.jsp <br/>
+-SearchEngine.css <br/>
+-WEB-INF <br/>
+| -lib <br/>
+| | -rocksdbini-6.0.0-linux64.jar <br/>
+| | -jsoup-1.8.1.jar <br/>
+| | -servlet-api.jar <br/>
+| -classes <br/>
+| | -Makefile <br/>
+| | -lib <br/>
+| | | -rocksdbini-6.0.0-linux64.jar <br/>
+| | | -jsoup-1.8.1.jar <br/>
+| | | -servlet-api.jar <br/>
+| | -resource <br/>
+| | | -database <br/>
+| | | | -DataTranform.java <br/>
+| | | | -PageInfo.java <br/>
+| | | | -ReadData.java <br/>
+| | | | -Rockdb.java <br/>
+| | | | -WriteData.java <br/>
+| | | -forward <br/>
+| | | | -CreateForward.java <br/>
+| | | | -DataPair.java <br/>
+| | | | -ForwardData.java <br/>
+| | | | -WordData.java <br/>
+| | | -invert <br/>
+| | | | -CreateInverted.java <br/>
+| | | | -InvertedData.java <br/>
+| | | | -SimplePageInfo.java <br/>
+| | | -processing <br/>
+| | | | -Porter.java <br/>
+| | | | -StopStem.java <br/>
+| | | | -stopwords.txt <br/>
+| | | -retrieval <br/>
+| | | | -DfWord.java <br/>
+| | | | -MaxTf.java <br/>
+| | | | -QueryHandle.java <br/>
+| | | | -QueryResScore.java <br/>
+| | | | -Retrieval.java <br/>
+| | | -server <br/>
+| | | | -SearchEngineServer.java <br/>
+| | | -spider <br/>
+| | | | -Crawler.java <br/>
+| | | | -HelperData.java <br/>
+| | | -test <br/>
+| | | | -TestForwardData.java <br/>
+| | | | -TestInvertData.java <br/>
+| | | | -TestJsp.java <br/>
+| | | | -TestQueryHandle.java <br/>
+| | | | -TestRead.java <br/>
+| | | | -TestReadGlobal.java <br/>
+| | | | -TestReadInvert.java <br/>
+| | | | -TestRetrieval.java <br/>
+| | | | -TestRocksdb.java <br/>
 
 # Installation
 
