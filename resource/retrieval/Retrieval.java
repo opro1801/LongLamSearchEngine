@@ -373,7 +373,12 @@ public class Retrieval {
         List<PairDocs> pairDocs = new ArrayList<>();
         List<Double> scores = new ArrayList<>();
         for (int i = 0; i < docsList.size(); i++) {
-            pairDocs.add(new PairDocs(docsList.get(i), finalSimilarity.get(i)));
+            if (phrases.size() > 0 &&
+                    !listDocsWithPhraseMatch.contains(docsList.get(i))) {
+                pairDocs.add(new PairDocs(docsList.get(i), finalSimilarity.get(i) * 0.5));
+            } else {
+                pairDocs.add(new PairDocs(docsList.get(i), finalSimilarity.get(i)));
+            }
         }
         Collections.sort(pairDocs);
         int count = 0;
@@ -391,12 +396,7 @@ public class Retrieval {
             }
             if (pairDocs.get(i).score == 0)
                 break;
-            if (phrases.size() > 0 &&
-                    !listDocsWithPhraseMatch.contains(pairDocs.get(i).pageId)) {
-                scores.add(pairDocs.get(i).score * 0.7); // penalize document doesnt contain phrase
-            } else {
-                scores.add(pairDocs.get(i).score);
-            }
+            scores.add(pairDocs.get(i).score);
             forwardDatas.add(readForward.readData(prefixForward + pairDocs.get(i).pageId, db));
         }
         System.out.println("Results retrieved: " + forwardDatas.size());
