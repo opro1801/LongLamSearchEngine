@@ -32,4 +32,3 @@ cleanClass:
 clean:
 	rm -rf resource/db
 	rm resource/*/*.class
-	rm spider_result.txt
