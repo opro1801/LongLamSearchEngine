@@ -281,7 +281,7 @@ public class Retrieval {
         Options options = new Options();
         options.setCreateIfMissing(true);
         // Creat and open the database
-        RocksDB db = RocksDB.open(options, dbPath);
+        RocksDB db = RocksDB.openReadOnly(options, dbPath);
 
         // Start handle
         // get database
