@@ -41,22 +41,6 @@ public final class SearchEngineServer {
     public static void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException, RocksDBException {
-        // String dbPath =
-        // "/root/apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes/resource/db";
-        // RocksDB.loadLibrary();
-        // String prefix = "Page@URL";
-        // try {
-        // Options options = new Options();
-        // options.setCreateIfMissing(true);
-
-        // // Creat and open the database
-        // RocksDB db = RocksDB.open(options, dbPath);
-
-        // ReadData<ForwardData> reads = new ReadData<ForwardData>();
-        // } catch (RocksDBException e) {
-        // // TODO Auto-generated catch block
-        // e.printStackTrace();
-        // }
 
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
@@ -78,29 +62,32 @@ public final class SearchEngineServer {
                     "<link href='https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Righteous&display=swap' rel='stylesheet'>");
             writer.println("</head>");
             writer.println(
-                    "<body style='padding-left: 30px; padding-right: 30px;text-overflow: ellipsis;font-family: 'Josefin Sans', sans-serif;font-family: 'Righteous', cursive;'>");
+                    "<body style='padding-left: 30px; padding-right: 30px;font-family: 'Josefin Sans', sans-serif;font-family: 'Righteous', cursive;'>");
 
-            // writer.println("<div style=\"float: left; padding: 10px;\">");
-            // writer.println("<img src=\"images/tomcat.gif\" alt=\"\" />");
-            // writer.println("</div>");
-            writer.println("<h1>Results</h1>");
-            writer.println("<h3>Results retrieved: " + output.size() + "</h3>");
+            writer.println("<h1 style='color:#4db4aa;'>Results</h1>");
+            writer.println("<h3 style='color:#cdb599ff;'>Results retrieved: " + output.size() + "</h3>");
 
-            // writer.println("<p>");
-            writer.println("<table style='width: 100%'>");
             for (int curRes = 0; curRes < output.size(); curRes++) {
-                writer.println("<tr>");
-                writer.println("<td style='vertical-align: top; width: 100px; margin-top: 20px; margin-right: 20px'>");
+                writer.println("<div>");
+                writer.println("<div style='display: flex;direction: row;margin-top: 20px;'>");
+                writer.println("<div style='width: 100px; text-align: left; margin-right: 10px; padding-top: 5px'>");
                 writer.println("Score: " + df.format(scores.get(curRes)));
-                writer.println("</td>");
-                writer.println("<td style='vertical-align: top'>");
-                writer.print("<a style='font-size:25px;text-decoration:none;color:#028FC8;' href='"
-                        + output.get(curRes).url + "'>");
+                writer.println("</div>");
+                writer.println("<div style='width: 600px'>");
+                writer.print(
+                        "<a style='font-size:25px;text-decoration:none;color:#028FC8;text-overflow: ellipsis;width:500px' href='"
+                                + output.get(curRes).url + "'>");
                 writer.print(output.get(curRes).wordTitle);
                 writer.println("</a>");
                 writer.println("<br>");
-                writer.print("<a style='text-decoration:none;color:#028FC8;' href='" + output.get(curRes).url + "'>");
-                writer.print(output.get(curRes).url);
+                writer.print("<a style='text-decoration:none;color:#028FC8;text-overflow: ellipsis;width:500px' href='"
+                        + output.get(curRes).url + "'>");
+                if (output.get(curRes).url.length() < 80) {
+                    writer.print(output.get(curRes).url);
+                } else {
+                    writer.print(
+                            output.get(curRes).url.substring(0, Math.min(output.get(curRes).url.length(), 80)) + "...");
+                }
                 writer.println("</a>");
                 writer.println("<br>");
                 // writer.print("No last modified date");
@@ -110,7 +97,7 @@ public final class SearchEngineServer {
                     writer.print(output.get(curRes).lastModified);
                 }
                 writer.print("; ");
-                writer.print(output.get(curRes).size + " characters");
+                writer.print(output.get(curRes).size);
                 List<WordData> keyWordListTitle = getKeyWordList(output.get(curRes).title, queryWordList);
                 if (keyWordListTitle.size() > 0) {
                     writer.println("<br>");
@@ -143,7 +130,12 @@ public final class SearchEngineServer {
                     writer.print(
                             "<a style='text-decoration:none;color:#028FC8;' href='"
                                     + output.get(curRes).parentLink.get(link) + "'>");
-                    writer.print(output.get(curRes).parentLink.get(link));
+                    if (output.get(curRes).parentLink.get(link).length() < 80) {
+                        writer.print(output.get(curRes).parentLink.get(link));
+                    } else {
+                        writer.print(output.get(curRes).parentLink.get(link).substring(0,
+                                Math.min(output.get(curRes).parentLink.get(link).length(), 80)) + "...");
+                    }
                     writer.println("</a>");
                     writer.println("<br>");
                     if (curLink >= maxLink)
@@ -155,22 +147,26 @@ public final class SearchEngineServer {
                 for (int link = 0; output.get(curRes).childrenLink != null
                         && link < output.get(curRes).childrenLink.size(); link++) {
                     curLink++;
-                    writer.print("<a style='text-decoration:none;color:#028FC8;' href='"
-                            + output.get(curRes).childrenLink.get(link)
-                            + "'>");
-                    writer.print(output.get(curRes).childrenLink.get(link));
+                    writer.print(
+                            "<a style='text-decoration:none;color:#028FC8;' href='"
+                                    + output.get(curRes).childrenLink.get(link)
+                                    + "'>");
+                    if (output.get(curRes).childrenLink.get(link).length() < 80) {
+                        writer.print(output.get(curRes).childrenLink.get(link));
+                    } else {
+                        writer.print(output.get(curRes).childrenLink.get(link).substring(0,
+                                Math.min(output.get(curRes).childrenLink.get(link).length(), 80)) + "...");
+                    }
                     writer.println("</a>");
                     writer.println("<br>");
                     if (curLink >= maxLink)
                         break;
                 }
                 writer.println("<br>");
-                writer.println("</td>");
-                writer.println("</tr>");
+                writer.println("</div>");
+                writer.println("</div");
+                writer.println("</div>");
             }
-            writer.println("</table>");
-            // writer.println("</p>");
-
             writer.println("</body>");
             writer.println("</html>");
         }

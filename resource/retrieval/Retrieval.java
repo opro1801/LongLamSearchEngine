@@ -268,7 +268,7 @@ public class Retrieval {
     public static QueryResScore doQuery(String query) throws RocksDBException, IOException {
         // TODO
         // Variable
-        String dbPath = "resource/db";
+        String dbPath = "/root/apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes/resource/db";
         QueryHandle handler = new QueryHandle(query);
         ReadData<ForwardData> readForward = new ReadData<>();
         ReadData<ArrayList<String>> readWordList = new ReadData<>();

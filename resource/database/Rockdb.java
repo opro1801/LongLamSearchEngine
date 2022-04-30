@@ -6,7 +6,7 @@ import resource.spider.Crawler;
 
 public class Rockdb{
     public static void main(String[] args){
-        String dbPath = "resource/db";
+        String dbPath = "/root/apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes/resource/db";
         RocksDB.loadLibrary();
         try {
             // The Options class contains a set of configurable DB options

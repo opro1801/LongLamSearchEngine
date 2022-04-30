@@ -12,7 +12,7 @@ import java.util.List;
 
 public class StopStem {
 	public static StopStem wordProcess() throws IOException {
-		return new StopStem("resource/processing/stopwords-en.txt");
+		return new StopStem("/root/apache-tomcat-10.0.20/webapps/ROOT/WEB-INF/classes/resource/processing/stopwords.txt");
 	}
 
 	private Porter porter;

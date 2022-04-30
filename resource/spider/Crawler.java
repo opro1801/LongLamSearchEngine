@@ -203,8 +203,8 @@ public class Crawler {
 				Response res = this.getResponse(focus.url);
 
 				urlToPageId.put(focus.url,docId);
-
-				int size = res.bodyAsBytes().length;
+				//byte[] dataa = res.bodyAsBytes();
+				//int size = dataa.length;
 
 				Document doc = res.parse();
 
@@ -247,6 +247,7 @@ public class Crawler {
 				}
 				wordList.addAll(StopStem.wordProcess().getListWords(titleWords));
 				wordList.addAll(StopStem.wordProcess().getListWords(words));
+				int size = StopStem.wordProcess().getListWords(titleWords).size() + StopStem.wordProcess().getListWords(words).size();
 				// urls.add(focus.url);
 				// sizes.add(size);
 				// title.add(curTitle);
